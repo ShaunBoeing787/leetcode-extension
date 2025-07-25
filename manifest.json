@@ -3,33 +3,40 @@
   "name": "DebugMate",
   "version": "1.0",
   "description": "A simple Chrome extension to demonstrate functionality.",
-  
-  "permissions": ["storage", "tabs","activeTab"],
-  "host_permissions": ["https://leetcode.com/*",
-  "https://generativelanguage.googleapis.com/*"],
+
+  "permissions": ["storage", "tabs", "activeTab"],
+  "host_permissions": [
+    "https://leetcode.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+
   "background": {
     "service_worker": "src/background.js",
     "type": "module"
   },
+
   "content_scripts": [
-  {
-    "matches": ["https://leetcode.com/problems/*"],
-    "js": ["src/leetcodeContent.js"],
-    "type": "module"
-  }
-],
-"icons": {
-    "16": "assets/icon.png",
-    "24": "assets/icon.png",
-    "32": "assets/icon.png",
-    "48": "assets/icon.png",
-    "128": "assets/icon.png"
+    {
+      "matches": ["https://leetcode.com/problems/*"],
+      "js": ["src/leetcodeContent.js"],
+      "type": "module"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "icons": {
+    "48": "assets/icon48.jpg"
   },
+
   "action": {
     "default_icon": {
-      "16": "assets/icon.png",
-      "24": "assets/icon.png",
-      "32": "assets/icon.png"
+      "48": "assets/icon48.jpg"
     },
     "default_title": "Your DebugMate",
     "default_popup": "src/ui/popup.html"

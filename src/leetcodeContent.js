@@ -48,7 +48,7 @@ async function fetchLeetCodeProblem(titleSlug) {
 
 //gemini
 async function getGeminiCompletion(prompt) {
-  const apiKey = "AIzaSyBiPebk6rHdVddG3h6HgpWhyN2KPfcZMhc";
+  const apiKey = "";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
   const payload = {
     contents: [
@@ -79,7 +79,17 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         const slug = getQuestionSlugFromURL();
         const question = await fetchLeetCodeProblem(slug);
 
-        const prompt = `Give 3 hints point wise for this LeetCode problem:\nTitle: ${question.title}\nDescription: ${question.content}. The first hint should be a bit subtle. Second hint should tell a bit more and third hint should almost give way. Each hint should be a maximum of two lines.`;
+        const prompt = `Give exactly 3 easily readable with no text formatting no bold , hints formatted like this:
+            ## Hint 1 ##
+              <text>
+
+            ## Hint 2 ##
+              <text>
+
+            ## Hint 3 ##
+              <text>
+
+            For the following problem: Title: ${question.title} \nDescription: ${question.content}`;
 
         const completion = await getGeminiCompletion(prompt);
 
