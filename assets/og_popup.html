@@ -1,0 +1,39 @@
+<!-->
+<script type="module" src="./popup.js"></script>
+<div class="container"></div>
+<-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LeetCode Hint</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 10px;
+        width: 300px;
+      }
+      #hintSection,
+      #notProblemSection {
+        display: none;
+      }
+      #hintBox {
+        margin-top: 10px;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="hintSection">
+      <h3>LeetCode Hint Generator</h3>
+      <button id="hintButton">Get Hint</button>
+      <div id="hintBox">Click "Get Hint" to load hints.</div>
+    </div>
+
+    <div id="notProblemSection">
+      <h3>Oops!</h3>
+      <p>This is not a LeetCode problem page.</p>
+    </div>
+
+    <script src="../ui/popup.js"></script>
+  </body>
+</html>
